@@ -16,8 +16,12 @@ from image_reconstruction.reconstruction_utils.beamforming import delay_multiply
 
 class DelayMultiplyAndSumAlgorithm(ReconstructionAlgorithm):
 
+    def get_name(self) -> str:
+        return "Delay-Multiply-And-Sum"
+
     def implementation(self, time_series_data: np.ndarray,
                        detection_elements: dict,
+                       sampling_rate: float,
                        field_of_view: np.ndarray,
                        **kwargs):
         """
@@ -85,7 +89,7 @@ class DelayMultiplyAndSumAlgorithm(ReconstructionAlgorithm):
 
         reconstructed = delay_multiply_and_sum(time_series_data=time_series_data,
                                                detection_elements=detection_elements,
-                                               sampling_rate=self.ipasc_data.get_sampling_rate(),
+                                               sampling_rate=sampling_rate,
                                                field_of_view=field_of_view,
                                                spacing_m=spacing_m,
                                                speed_of_sound_in_m_per_s=speed_of_sound_in_m_per_s,

@@ -41,7 +41,7 @@ def fft_hauptmann_2d(time_series_data, detection_elements, sampling_rate_hz,
         A 2D numpy array with the following internal array definition: [detectors, time samples]
     detection_elements: dict
         Definition of the transducer elements
-    sampling_rate_hz: int
+    sampling_rate_hz: float
         Data sampling rate in Hz
     field_of_view: np.ndarray
         The target field of view in [xmin, xmax, ymin, ymax, zmin, zmax] in meters
@@ -68,7 +68,6 @@ def fft_hauptmann_2d(time_series_data, detection_elements, sampling_rate_hz,
             [len(set(positions[:, 0])), len(set(positions[:, 1])), len(set(positions[:, 2]))]) if e != 1]
 
         if len(sensor_axis) > 1:
-            
             print('ERROR: Sensor is not a planar sensor')
 
         # make grid for the sensor axis 
